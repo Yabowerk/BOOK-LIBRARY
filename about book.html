@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Library</title>
+
+  
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 120px; /* Account for fixed navbars */
+        }
+
+        .book-cover {
+            width: 100%; /* Make image responsive */
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .book-info {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .book-description {
+            margin-top: 20px;
+        }
+
+        .books:hover {
+        transform: scale(1.1); 
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+        opacity: 0.8;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .genres {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #777;
+        }
+
+        .genres span {
+            margin-right: 15px;
+        }
+        .status-button {
+    font-size: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    width: 200px;
+    margin: 0 auto;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.available {
+    background-color: #28a745; 
+}
+
+.borrowed {
+    background-color: #dc3545; 
+}
+.jumbotron:hover {
+          background-color: #f0f0f0; /* Light gray background on hover */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow to lift the jumbotron */
+          cursor: pointer; /* Change the cursor to indicate it's interactive */
+          transform: scale(1.05); /* Slightly enlarge on hover */
+          
+        }
+        .jumbotron {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition for scaling, background, and shadow */
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Navbar (Logo + Sign Out) -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header" style="margin-left:20px;">
+            <a class="navbar-brand" href="#">
+                <img src="path/to/logo.png" alt="Logo" style="max-height: 30px; display: inline-block;">
+            </a>
+        </div>
+        <div class="navbar-right" style="margin-right:20px;">
+            <a href="#" class="btn btn-default signout-btn">
+                <i class="fa fa-sign-out"></i> Sign Out
+            </a>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="top: 50px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="home.html" style="margin-right: 50px;">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right" style="display: flex; justify-content: center; flex-grow: 1; padding-right: 50px;">
+                    <li style="margin-left: 30px; margin-right: 30px;"><a href="civil book section.html">CIVIL</a></li>
+                    <li style="margin-left: 30px; margin-right: 30px;"><a href="MEDC book section.html">MEDICINE</a></li>
+                    <li style="margin-left: 30px; margin-right: 30px;"><a href="hist book section.html">HISTORY</a></li>
+                    <li style="margin-left: 30px; margin-right: 30px;"><a href="comp book section.html">COMPUTER SCIENCE</a></li>
+                    <li style="margin-left: 30px; margin-right: 30px;"><a href="mech book section.html">MECHANICAL</a></li>
+                    <li style="margin-left: 30px; margin-right: 30px;"><a href="soft book section.html">SOFTWARE ENGINEERING</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    
+    
+    <!-- Main Content Section -->
+    <div class="container-fluid main-content">
+        <div class="" style="margin-right:200px;margin-left:200px;">
+            <div class="row">
+                <!-- Book Cover and Info Section -->
+                
+                <div class="col-sm-3">
+                    <img src="image/New Project.png" alt="Book Cover" class="books" style="width: 300px; height: 400px; margin-left: 250px; margin-top: 2px; margin-bottom:12px;"><br><button type="button" class="btn btn-danger"style="margin-left:350px";>DOWNLOAD</button></h1>
+                </div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <h1 style="margin-top:120px;">Book Title</h1>
+                    <div class="book-info">
+                        <p><strong>By: Author Name</p></strong>
+                        <p style="color:#28a745">Size:2.3MB</p>
+                        <p><strong>Year: 2020</strong></p>
+                        <h2><strong>Book status:</strong><button class="status-button available" id="statusButton">Available</button>
+                        </h2>
+                    </div>
+                  
+                   
+                </div>
+                
+            </div>
+        </div>
+
+      
+        <div class="jumbotron book-description">
+            <h2>Description</h2>
+            <p>
+                This is a thrilling mystery novel that takes the reader through a rollercoaster of emotions.
+                The story revolves around a detective who uncovers a dark conspiracy while investigating a series
+                of crimes. With unexpected twists and a gripping plot, this book is perfect for fans of mystery and
+                adventure.
+            </p>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="jumbotron">
+            <h2><center>About Us</center></h2>
+            <p style="margin-left:100px">
+                Welcome to our website! We are dedicated to providing high-quality services to our clients. Our team is passionate about delivering exceptional results and ensuring customer satisfaction. With years of experience in the industry, we have built a reputation for excellence and reliability.
+                <br><br>
+                Our mission is to help businesses grow by offering tailored solutions that meet their unique needs. We believe in collaboration and work closely with our clients to achieve their goals. Thank you for visiting us, and we look forward to partnering with you.
+            </p>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+
+        // Simulate the status toggle
+let isBorrowed = false;  // Change this to 'true' if the book is borrowed
+
+// Update button text and color based on status
+function updateStatus() {
+    const statusButton = document.getElementById("statusButton");
+
+    if (isBorrowed) {
+        statusButton.textContent = "Borrowed";
+        statusButton.classList.remove("available");
+        statusButton.classList.add("borrowed");
+    } else {
+        statusButton.textContent = "Available";
+        statusButton.classList.remove("borrowed");
+        statusButton.classList.add("available");
+    }
+}
+
+// Initial update
+updateStatus();
+
+    </script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

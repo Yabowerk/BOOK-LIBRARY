@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Library</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome (optional, for the sign-out icon) -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 120px; /* Account for fixed navbars */
+        }
+
+        .sidebar {
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
+            padding-top: 20px;
+            height: 100vh; /* Make sidebar full height */
+            position: fixed; /*Fixed sidebar*/
+            top: 120px; /*Below navbars*/
+            left: 0;
+            bottom: 0;
+            width: 200px; /*Fixed width*/
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar li a:hover {
+            background-color: #ddd;
+        }
+
+        .main-content {
+            padding-top: 20px;
+            padding-left: 220px; /* Account for sidebar width + some padding */
+        }
+
+        /* Jumbotron Hover Effect */
+        .jumbotron {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition for scaling, background, and shadow */
+}
+        
+
+        .jumbotron:hover {
+          background-color: #f0f0f0; /* Light gray background on hover */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow to lift the jumbotron */
+          cursor: pointer; /* Change the cursor to indicate it's interactive */
+          transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .contact-section {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .book-description {
+            margin-top: 10px;
+            color: #777;
+        }
+         .book-image {
+            width: 90%;
+    height: 500px; 
+            border-radius: 5px; /* Optional: round the corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+        }
+
+      
+    .books {
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
+    }
+
+    .books:hover {
+        transform: scale(1.1); /* Scale the image slightly */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+        opacity: 0.8; /* Optional: Reduce opacity on hover */
+    }
+
+    .panel-body .row {
+        margin-top: 20px;
+    }
+
+    .panel-body .text-center h3 {
+        margin-top: 10px;
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Top Navbar (Logo + Sign Out) -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header" style="margin-left:20px;">
+            <a class="navbar-brand" href="#">
+                <!-- Replace "path/to/logo.png" with the actual path to your logo image -->
+                <img src="path/to/logo.png" alt="Logo" style="max-height: 30px; display: inline-block;">
+            </a>
+        </div>
+        <div class="navbar-right" style="margin-right:20px;">
+            <a href="#" class="btn btn-default signout-btn">
+                <i class="fa fa-sign-out"></i> Sign Out
+            </a>
+        </div>
+    </nav>
+
+    <!-- Second Navbar (Navigation Links) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="top: 50px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="home.html" style="margin-left:12px;">Home</a>
+            </div>
+            
+            <!-- Search form on the right side -->
+            <form class="navbar-form navbar-right" role="search" >
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" style="margin-bottom:12px;">
+                </div>
+                <button type="submit" class="btn btn-default" style="margin-bottom:12px;margin-right:150px;">Submit</button>
+            </form>
+        </div>
+      </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" style="width: 300px margin-left : 20px;">
+        <ul>
+            <li><a href="civil book section.html"><img src="image/civil-engineering.png" alt="Book Cover" class="book-image" style="border: 2px solid #3498db;width: 45px; height: auto; border-radius:50px;">Civil Engineering Engineering</a></li>
+            <li><a href="mech book section.html"><img src="image/mech.png" alt="Book Cover" class="book-image" style="border: 2px solid #3498db; width: 45px; height: auto; border-radius:50px;">Mechanical Engineering</a></li>
+            <li><a href="comp book section.html"><img src="image/neural.png" alt="Book Cover" class="book-image" style="border: 2px solid #3498db; width: 45px; height: auto; border-radius:50px;">Computer Sceince</a></li>
+            <li><a href="MEDC book section.html"><img src="image/medicine.png" alt="Book Cover" class="book-image" style="border: 2px solid #3498db;width: 45px; height: auto; border-radius:50px;">medicine</a></li>
+            <li><a href="hist book section.html"><img src="image/parchment.png" alt="Book Cover" class="book-image" style="border: 2px solid #3498db;width: 45px; height: auto; border-radius:50px;">History</a></li>
+            <li><a href="psych book section.html"><img src="image/brain.png" alt="Book Cover" class="book-image" style="border: 2px solid #3498db; width: 45px; height: auto; border-radius:50px;">Psychology</a></li>
+            <li><a href="soft book section.html"><img src="image/soft.png"alt="Book Cover" class="book-image" style="border: 2px solid #3498db; width: 45px; height: auto; border-radius:50px;">Software Engineering</a></li>
+            <li><a href="nov book section.html"><img src="image/novel.png" alt="Book Cover" class="book-image" style="border: 2px solid #3498db; width: 45px; height: auto; border-radius:50px;">Novel</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container-fluid main-content">
+        
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img src="image/energy-system_11498973.png" alt="Image description" class="img-fluid" style="max-height: 250px;">
+                        </div>
+                        <div class="col-sm-9">
+                            <h1>Electrical Engineering Books</h1>
+                            <p>A comprehensive guide to the fundamental principles of electrical engineering, covering circuits, electronics, and more.</p>
+                        
+                        </div>
+                    </div>
+                </div>
+                
+               
+          <!--sectionn-->
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>New Arrivals</h2>
+            </div>
+            <div class="panel-body">
+                <hr>  
+                <!-- First row -->
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                </div>
+                <!-- End of first row -->
+                <hr>  
+                <!-- Second row -->
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                </div>
+                <!-- End of second row -->
+                <hr>  
+                <!-- Third row -->
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="MARK.html">
+                            <img src="image/harry.png" alt="Book Cover" class="img-fluid books">
+                            <h3>Harry Potter</h3>
+                        </a>
+                    </div>
+                </div>
+                <!-- End of third row -->
+            </div> <!-- panel-body -->
+        </div> <!-- panel -->
+        
+        
+
+
+
+
+
+        
+       
+
+        <!-- Contact Section -->
+        <div class="jumbotron">
+            <h2>Contact Us</h2>
+            <p>Have questions or feedback? Reach out to us!</p>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>

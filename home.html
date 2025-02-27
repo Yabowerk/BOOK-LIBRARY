@@ -1,0 +1,366 @@
+<?php
+  session_start();  //check if the user logged to prevent him from reinserting his informations
+  if (!isset($_SESSION['uid'])) {
+
+    header("Location: login.php");
+  } // Redirect to login page if not logged in
+
+ 
+  include "config.php";
+  
+
+
+
+
+   
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        /* Styles for both navbars */
+        .carousel-control {
+  width: 50px; /* Reduce the width of the clickable area */
+}
+
+.carousel-control .glyphicon {
+  font-size: 24px; /* Adjust arrow size if needed */
+}
+
+        .navbar {
+            margin: 0; /* Remove margin */
+            padding: 0 150px; /* Remove padding */
+        }
+        .navbar-header {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .navbar-right {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .signout-btn {
+            display: flex;
+            align-items: center;
+            margin-right: 20px; /* Adjust this value for more or less gap */
+        }
+
+        /* Styles for the second navbar */
+        .navbar-inverse {
+            margin-top: 0; /* Ensure no margin at the top */
+            padding-top: 0; /* Ensure no padding at the top */
+            padding-bottom: 0; /* Ensure no padding at the bottom */
+        }
+
+        /* Add padding to body to prevent content from being hidden under the fixed navbar */
+        body {
+            padding-top: 100px; /* Adjust based on total height of both navbars */
+        }
+  
+
+        .books {
+          width: 90%;
+    height: 500px; 
+    background-size: cover; /* Ensure image covers entire container */
+    background-position: center; /* Center the image horizontally and vertically */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
+}
+.books:hover {
+        transform: scale(1.1); /* Scale the image slightly */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+        opacity: 0.8; /* Optional: Reduce opacity on hover */
+    }
+/* CSS for Jumbotron Hover Effect (Smoother) */
+.jumbotron {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition for scaling, background, and shadow */
+}
+
+.jumbotron:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow to lift the jumbotron */
+  cursor: pointer; /* Change the cursor to indicate it's interactive */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <!-- Logo on the far left -->
+    <div class="navbar-header" style="margin-left:20px;">
+        <a class="navbar-brand" href="#">
+            <img src="path/to/logo.png" alt="Logo">
+        </a>
+    </div>
+
+    <!-- Sign out button on the far right with a gap -->
+    <div class="navbar-right">
+        <a href="#" class="btn btn-default signout-btn">
+            <i class="fa fa-sign-out"></i> Sign Out
+        </a>
+    </div>
+</nav>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" style="top: 50px;">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand" href="" style="margin-left:12px;">Home</a>
+      </div>
+      
+      <!-- Search form on the right side -->
+      <form class="navbar-form navbar-right" role="search" >
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" style="margin-bottom:12px;">
+          </div>
+          <button type="submit" class="btn btn-default" style="margin-bottom:12px;margin-right:150px;">Submit</button>
+      </form>
+  </div>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron"style="margin-top:20px;">
+
+          <?php
+          $uid=$_GET['uid'];
+          $q="SELECT fname,lname,email,password FROM user_info WHERE UID=$id";
+          $result=mysqli_query($conn, $q);
+          $row=mysqli_fetch_assoc($result);
+
+          echo "<td style='padding-left: 20px;'><h1>Hello abebe</h1></td>
+            <p>This online book library is designed to provide users with a seamless and enriching reading experience. By offering a secure and personalized platform, users can explore a diverse range of book genres tailored to their interests. The intuitive navigation system, complete with a search function and categorized book sections, ensures effortless browsing and quick access to desired books.  Additionally, the platform keeps users updated with the latest book arrivals, helping them stay informed about trending reads. With easy access to resources, a visually appealing interface, and direct connectivity through social media, this library enhances convenience, engagement, and accessibility for every reader.</p>
+
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron">
+                <center><h1>Genres</h1></center>
+
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="background-color:red;border-radius:50px;">
+                    <!-- Indicators -->
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                      <!-- Indicators -->
+                      <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                      </ol>
+                    
+                      <div class="carousel-inner">
+                        <div class="item active">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <a href="elec book section.html">
+                                <center><img src="image/elect.png" alt="Image description" style="max-width: 100%; max-height: 250px;"></center><br><h3><center>Electrical engineering</center></h3>
+                              </a>
+                              
+                            </div>
+                            <div class="col-md-4">
+                              <a href="mech book section.html">
+                                <center><img src="image/mech.png" alt="Image description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>Mechanical engineering</h3></center>
+                              </a>
+                             
+                            </div>
+                            <div class="col-md-4">
+                              <a href="MEDC book section.html">
+                               <center> <img src="image/medic.png" alt="Image description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>Medicine</h3></center>
+                              </a>
+                            
+                            </div>
+                          </div>
+                        </div>
+                    
+                        <div class="item">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <a href="soft book section.html">
+                                <center><img src="image/soft.png" alt="Image 7 description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>Software engineering</h3></center>
+                              </a>
+                             
+                            </div>
+                            <div class="col-md-4">
+                              <a href="psych book section.html">
+                                <center><img src="image/brain.png" alt="Image 8 description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>Psychology</h3></center>
+                              </a>
+                              
+                            </div>
+                            <div class="col-md-4">
+                              <a href="hist book section.html">
+                                <center><img src="image/parchment.png" alt="Image 9 description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>History</h3></center>
+                              </a>
+                          
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="item">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <a href="nov book section.html">
+                                <center><img src="image/novel.png" alt="Image description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>Novel</h3></center>
+                              </a>
+                            </div>
+                          
+                            <div class="col-md-4">
+                              <a href="comp book section.html">
+                                <center><img src="image/neural.png" alt="Image 7 description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>Computer Science</h3></center>
+                              </a>
+                             
+                            </div>
+                            <div class="col-md-4">
+                              <a href="civil book section.html">
+                                <center><img src="image/civil-engineering.png" alt="Image 7 description" style="max-width: 100%; max-height: 250px;"></center><br><center><h3>Civil Engineering</h3></center>
+                              </a>
+                             
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    
+                      <!-- Controls -->
+                      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    
+                    
+                    
+        <!-- /.col-lg-12 -->
+    </div>
+</div>
+</div>
+
+
+
+  <div class="col-lg-12">
+      <div class="jumbotron">
+        <h2>New Arrivals</h2>
+        <hr>  
+        <div class="row">
+<div class="col-md-3">
+  <a href="about book.html"><img src="image/New Project.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+</div>
+
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/169f725f-d371-44dc-ab83-b2dc23f071ef.webp" alt="Book Cover" class="books" ><br><center><h3>harry potter </h3></center></a>
+
+ </div>
+ <div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+ </div>
+ <div class="col-md-3">
+  <a href="MARK.html"><img src="image/mech.jpg" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+
+ </div>
+      </div>
+      <!--the first row row-->
+      <hr>  
+      <div class="row">
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+</div>
+
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+
+</div>
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+</div>
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+</div>
+    </div>
+    <!----the second row-->
+    <hr>  
+    <div class="row">
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+</div>
+
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+
+</div>
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+
+</div>
+<div class="col-md-3">
+  <a href="MARK.html"><img src="image/harry.png" alt="Book Cover" class="books"><br><center><h3>harry potter </h3></center></a>
+</div>
+  </div>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+</div>
+
+<div class="container-fluid">
+  <div class="jumbotron">
+  <div class="row">
+      <div class="col-md-12 text-center">
+          <h2>Contact Us</h2>
+          <p>Learn more about our mission and values.</p>
+          
+          <!-- Social Media Icons -->
+          <ul class="list-inline social-icons">
+              <li><a href="#"><img src="image/insta.png" alt="no image" style="width: 55px; height: auto; border-radius:50px;"></a></li>
+              <li><a href="https://github.com/Yabowerk/Yabowerk/tree/main"><img src="image/github.png" alt="no image" style="width: 55px; height: auto; border-radius:50px;"></a></li>
+              <li><a href="#"><img src="image/telegram.png" alt="no image" style="width: 55px; height: auto; border-radius:50px;"></a></li>
+              <li><a href="#"><img src="image/communication.png" alt="no image" style="width: 55px; height: auto; border-radius:50px;"></a></li>
+             
+<!-- Or use this if you have telegram font-awesome or similar available:
+<li><img src="" alt="" width="" height=""><span>Telegram</span>&nbsp;</span>&nbsp;</img>
+
+However for simplicity use SVG or PNG images directly.
+-->
+              
+          </ul>
+
+          <!-- Copyright Notice -->
+          <h2>&copy; 2024 .</h2>
+      </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+ <script>
+    $(document).ready(function(){
+        $('#myCarousel').carousel();
+    });
+    </script>
+</body>
+</html>
